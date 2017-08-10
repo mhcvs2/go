@@ -34,7 +34,6 @@ func main()  {
 	if err = americanize(inFile, outFile); err != nil {
 		log.Fatal(err)
 	}
-
 }
 
 var britishAmerican = "british-american.txt"

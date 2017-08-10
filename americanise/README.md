@@ -27,3 +27,31 @@ la
 la
 
 </pre></code>
+
+test
+-----------------------------------
+<pre><code>
+package main
+
+import "fmt"
+
+func main()  {
+	usForBritish := make(map[string]string)
+	usForBritish["a"] = "b"
+	word := "a"
+	usWord, found := usForBritish[word]
+
+	fmt.Println(usWord)
+	fmt.Println(found)
+}
+---------------------------------
+/usr/lib/golang/bin/go run /root/GoglandProjects/test4/main.go
+b
+true
+
+如果 word="sdfsdf"
+/usr/lib/golang/bin/go run /root/GoglandProjects/test4/main.go
+
+false
+
+</pre></code>
