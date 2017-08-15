@@ -24,8 +24,8 @@ func main()  {
 }
 
 func readUpToLines(file string, number int) (linesRead int, lines []string) {
-	inFile := os.Stdin
-	err := errors.New("")
+	var inFile *os.File
+	var err error
 	if inFile, err = os.Open(file); err != nil {
 		log.Fatal(err)
 	}
