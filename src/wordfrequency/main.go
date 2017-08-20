@@ -44,7 +44,7 @@ func readAndUpdateFrequencies(reader *bufio.Reader, frequencyForWord map[string]
 		for _, word := range SplitOnNonLetters(strings.TrimSpace(line)) {
 			if len(word) > utf8.UTFMax || utf8.RuneCountInString(word) > 1 {
 				frequencyForWord[strings.ToLower(word)] += 1
-			} 
+			}
 		}
 		if err != nil {
 			if err != io.EOF {

@@ -3,10 +3,11 @@ package main
 import (
 	"strings"
 	"fmt"
+	"unicode"
 )
 
 func main()  {
-	t1()
+	t3()
 }
 
 func t1()  {
@@ -29,4 +30,26 @@ func t1()  {
 	aa ddf fgg
 
 	*/
+}
+
+func t2()  {
+	line := "    aa ddf fgg    "
+	for _, word := range SplitOnNonLetters(strings.TrimSpace(line)) {
+		fmt.Println(word)
+	}
+	/*
+	aa
+	ddf
+	fgg
+	*/
+}
+
+func SplitOnNonLetters(s string) []string {
+	notALetter := func(char rune) bool { return !unicode.IsLetter(char)}
+	return strings.FieldsFunc(s, notALetter)
+}
+
+func t3()  {
+	fmt.Println(strings.Repeat("hi ", 5))
+	// hi hi hi hi hi
 }
