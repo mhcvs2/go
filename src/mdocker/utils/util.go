@@ -7,9 +7,10 @@ import (
 	"runtime"
 	"strings"
 	"text/template"
-	myLogger "dockerManage/logger"
-	"dockerManage/logger/colors"
+	myLogger "mdocker/logger"
+	"mdocker/logger/colors"
 	"os/exec"
+	"strconv"
 )
 
 // Go is a basic promise implementation: it wraps calls a function in a goroutine
@@ -103,5 +104,17 @@ func Exec_shell(s string) (string, error) {
 	if err != nil {
 		return "", err
 	}
-	return out.String(), nil
+	return strings.TrimSpace(out.String()), nil
+}
+
+func OutIsNil(s string) bool {
+	cmd := s + "|wc -l"
+	out, err := Exec_shell(cmd)
+	if err != nil {
+		return false
+	}
+	if outInt, _ := strconv.Atoi(out); outInt == 0 {
+		return false
+	}
+	return true
 }

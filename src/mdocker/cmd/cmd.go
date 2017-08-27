@@ -1,32 +1,35 @@
 package cmd
 
 import (
-	"dockerManage/cmd/commands"
-	_ "dockerManage/cmd/commands/getip"
-	"dockerManage/utils"
-	_ "dockerManage/cmd/commands/clearimg"
+	"mdocker/cmd/commands"
+	_ "mdocker/cmd/commands/ins"
+	"mdocker/utils"
+	_ "mdocker/cmd/commands/img"
+	_ "mdocker/cmd/commands/start"
+	_ "mdocker/cmd/commands/stop"
+	_ "mdocker/cmd/commands/rm"
 )
 
 var usageTemplate = `Bee is a Fast and Flexible tool for managing your Beego Web Application.
 
 {{"USAGE" | headline}}
-    {{"dockerManage command [arguments]" | bold}}
+    {{"mdocker command [arguments]" | bold}}
 
 {{"AVAILABLE COMMANDS" | headline}}
 {{range .}}{{if .Runnable}}
     {{.Name | printf "%-11s" | bold}} {{.Short}}{{end}}{{end}}
 
-Use {{"dockerManage help [command]" | bold}} for more information about a command.
+Use {{"mdocker help [command]" | bold}} for more information about a command.
 
 {{"ADDITIONAL HELP TOPICS" | headline}}
 {{range .}}{{if not .Runnable}}
     {{.Name | printf "%-11s"}} {{.Short}}{{end}}{{end}}
 
-Use {{"dockerManage help [topic]" | bold}} for more information about that topic.
+Use {{"mdocker help [topic]" | bold}} for more information about that topic.
 `
 
 var helpTemplate = `{{"USAGE" | headline}}
-  {{.UsageLine | printf "dockerManage %s" | bold}}
+  {{.UsageLine | printf "mdocker %s" | bold}}
 {{if .Options}}{{endline}}{{"OPTIONS" | headline}}{{range $k,$v := .Options}}
   {{$k | printf "-%s" | bold}}
       {{$v}}
@@ -35,8 +38,8 @@ var helpTemplate = `{{"USAGE" | headline}}
   {{tmpltostr .Long . | trim}}
 `
 
-var ErrorTemplate = `dockerManage: %s.
-Use {{"dockerManage help" | bold}} for more information.
+var ErrorTemplate = `mdocker: %s.
+Use {{"mdocker help" | bold}} for more information.
 `
 
 func Usage() {

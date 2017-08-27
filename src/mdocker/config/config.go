@@ -3,7 +3,7 @@ package config
 import (
 	"encoding/json"
 	"io/ioutil"
-	beeLogger "dockerManage/logger"
+	beeLogger "mdocker/logger"
 )
 
 var Conf = struct {

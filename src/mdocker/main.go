@@ -4,9 +4,9 @@ import (
 	"flag"
 	"log"
 	"os"
-	"dockerManage/cmd"
-	"dockerManage/cmd/commands"
-	"dockerManage/utils"
+	"mdocker/cmd"
+	"mdocker/cmd/commands"
+	"mdocker/utils"
 )
 
 func main() {
