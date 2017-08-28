@@ -39,7 +39,6 @@ func (docker *DockerManage) baseManage(action, sub_cmd string, names []string, c
 			action_cmd += " " + name
 		}
 	}
-	fmt.Println(action_cmd)
 	if _, err := utils.Exec_shell(action_cmd); err != nil {
 		myLogger.Log.Fatal(err.Error())
 	} else {

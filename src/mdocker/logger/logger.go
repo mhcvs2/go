@@ -110,8 +110,8 @@ func GetBeeLogger(w io.Writer) *BeeLogger {
 	once.Do(func() {
 		var (
 			err             error
-			simpleLogFormat = `{{Now "2006/01/02 15:04:05"}} {{.Level}} ▶ {{.ID}} {{.Message}}{{EndLine}}`
-			debugLogFormat  = `{{Now "2006/01/02 15:04:05"}} {{.Level}} ▶ {{.ID}} {{.Filename}}:{{.LineNo}} {{.Message}}{{EndLine}}`
+			simpleLogFormat = `{{Now "2006/01/02 15:04:05"}} {{.Level}}: {{.Message}}{{EndLine}}`
+			debugLogFormat  = `{{Now "2006/01/02 15:04:05"}} {{.Level}}: {{.Filename}}:{{.LineNo}} {{.Message}}{{EndLine}}`
 		)
 
 		// Initialize and parse logging templates
