@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
 
 func t1() {
 	data := []byte{'w','q'}
@@ -12,6 +15,15 @@ func t1() {
 	//"sa"
 }
 
+func lenOfString(str string) string  {
+	l := len([]rune(str))
+	return strconv.Itoa(l)
+}
+
+func t2() {
+	fmt.Println(lenOfString("hello"))
+}
+
 func main() {
-	t1()
+	t2()
 }
