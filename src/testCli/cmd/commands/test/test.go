@@ -7,6 +7,8 @@ import (
 	"os"
 	myLogger "testCli/logger"
 	"strings"
+	"encoding/json"
+	"fmt"
 )
 
 var CmdRun = &commands.Command{
@@ -76,6 +78,12 @@ var testTemplate4 = `---backups---
 {{$v | fen}}
 {{ end }}`
 
+type Image struct {
+	Service string
+	Image   string
+	InsNum  string
+}
+
 func init() {
 	CmdRun.Flag.StringVar(&main, "main", "default_main","Specify main go files.")
 	commands.AvailableCommands = append(commands.AvailableCommands, CmdRun)
@@ -88,9 +96,20 @@ func testRun(cmd *commands.Command, args []string) int {
 	//mhcs = append(mhcs, &mhc)
 	//mhcs = append(mhcs, &mhc2)
 	//Tmpl(testTemplate2, mhcs)
-	backs := []string{"hello-world", "hello-world","hello-world","hello-world","hello-world"}
-	Tmpl(testTemplate4, backs)
-
+	//backs := []string{"hello-world", "hello-world","hello-world","hello-world","hello-world"}
+	//Tmpl(testTemplate4, backs)
+	var imageList []Image
+	fmt.Println(main)
+	fmt.Println([]byte(main))
+	err := json.Unmarshal([]byte(main), &imageList)
+	if err != nil {
+		fmt.Println(err.Error())
+	}
+	fmt.Println(len(imageList))
+	for _, image := range imageList {
+		fmt.Println(image.Service)
+		fmt.Println(image.Image)
+		fmt.Println(image.InsNum)
+	}
 	return 0
-
 }
