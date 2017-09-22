@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"strconv"
+	"reflect"
 )
 
 func t1() {
@@ -22,7 +23,10 @@ func lenOfString(str string) string  {
 
 func t2() {
 	fmt.Println(lenOfString("hello"))
+	reflect.ValueOf()
 }
+
+
 
 func main() {
 	t2()
