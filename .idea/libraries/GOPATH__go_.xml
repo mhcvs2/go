@@ -1,0 +1,23 @@
+<component name="libraryTable">
+  <library name="GOPATH &lt;go&gt;">
+    <CLASSES>
+      <root url="file://$USER_HOME$/GoglandProjects/beegoTest/src/mhc" />
+      <root url="file://$USER_HOME$/GoglandProjects/beegoTest/src/myapp" />
+      <root url="file://$USER_HOME$/GoglandProjects/beegoTest/src/github.com" />
+      <root url="file://$USER_HOME$/GoglandProjects/beegoTest/src/node_exporter" />
+      <root url="file://$USER_HOME$/GoglandProjects/beegoTest/src/test" />
+      <root url="file://$USER_HOME$/GoglandProjects/beegoTest/src/git.sec.samsung.net" />
+    </CLASSES>
+    <SOURCES>
+      <root url="file://$USER_HOME$/GoglandProjects/beegoTest/src/mhc" />
+      <root url="file://$USER_HOME$/GoglandProjects/beegoTest/src/myapp" />
+      <root url="file://$USER_HOME$/GoglandProjects/beegoTest/src/github.com" />
+      <root url="file://$USER_HOME$/GoglandProjects/beegoTest/src/node_exporter" />
+      <root url="file://$USER_HOME$/GoglandProjects/beegoTest/src/test" />
+      <root url="file://$USER_HOME$/GoglandProjects/beegoTest/src/git.sec.samsung.net" />
+    </SOURCES>
+    <excluded>
+      <root url="file://$PROJECT_DIR$" />
+    </excluded>
+  </library>
+</component>
