@@ -90,6 +90,7 @@ func t4() {
 	var a4 interface{}
 	a4 = Test4{122, "sadad"}
 	value := reflect.ValueOf(a4)
+
 	fmt.Println(value.Kind())
 	fmt.Println(value.NumField())
 	fmt.Println("-------------")
@@ -165,5 +166,5 @@ func t6() {
 }
 
 func main() {
-	t5()
+	t4()
 }

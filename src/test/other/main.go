@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"strconv"
-	"reflect"
 )
 
 func t1() {
@@ -21,9 +20,18 @@ func lenOfString(str string) string  {
 	return strconv.Itoa(l)
 }
 
+type S struct {
+	A string
+	B bool
+}
+
 func t2() {
-	fmt.Println(lenOfString("hello"))
-	reflect.ValueOf()
+	s := S{}
+	if s.B {
+		fmt.Println("yes")
+	} else {
+		fmt.Println("no")
+	}
 }
 
 
