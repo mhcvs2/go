@@ -13,13 +13,11 @@ start container
 	Run:    start,
 }
 
-var dm = docker.NewDockerManage()
-
 func init() {
 	commands.AddGroup("default", CmdRun)
 }
 
 func start(cmd *commands.Command, args []string) int {
-	dm.Start(args, true)
+	docker.Run("Start", args)
 	return 0
 }

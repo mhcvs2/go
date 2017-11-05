@@ -146,6 +146,10 @@ func t5() {
 	args[0] = reflect.ValueOf("mhc")
 	value.MethodByName("Test3Method").Call(args)
 	value.MethodByName("Test4Method").Call([]reflect.Value{})
+	method := value.MethodByName("sdfsdf")
+	if (method == reflect.Value{}){
+		fmt.Println("mei")
+	}
 }
 /*
 3
@@ -166,5 +170,5 @@ func t6() {
 }
 
 func main() {
-	t4()
+	t5()
 }

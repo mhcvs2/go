@@ -10,10 +10,14 @@ var Conf = struct {
 	AppName            string
 	Version            string
 	Description        string
+	Ignore             []string
+	Wn                 int
 }{
 	AppName: "mdocker",
 	Version: "0.1.0",
 	Description: "mdocker description",
+	Ignore:[]string{},
+	Wn:4,
 }
 
 // dirStruct describes the application's directory structure

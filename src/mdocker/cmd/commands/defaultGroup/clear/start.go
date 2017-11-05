@@ -5,19 +5,21 @@ import (
 )
 
 var CmdRun = &commands.Command{
-	UsageLine: "rm",
-	Short:     "rm container",
+	UsageLine: "clear",
+	Short:     "clear img",
 	Long: `
-rm container
+clear img
 `,
-	Run:    rm,
+	Run:    clear,
 }
+
+var dins = docker.NewImages()
 
 func init() {
 	commands.AddGroup("default", CmdRun)
 }
 
-func rm(cmd *commands.Command, args []string) int {
-	docker.Run("Rm", args)
+func clear(cmd *commands.Command, args []string) int {
+	dins.ClearTemp()
 	return 0
 }

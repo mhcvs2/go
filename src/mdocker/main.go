@@ -10,6 +10,7 @@ import (
 	"mdocker/utils"
 	MyLogger "mdocker/logger"
 	"fmt"
+	"mdocker/config"
 )
 
 func main() {
@@ -18,6 +19,9 @@ func main() {
 	flag.Usage = cmd.Usage
 	flag.Parse()
 	log.SetFlags(0)
+	if ok, _ := utils.PathExists("/etc/mdocker.conf"); ok{
+		config.LoadConfig("/etc/mdocker.conf")
+	}
 
 	args := flag.Args()
 

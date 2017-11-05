@@ -5,19 +5,21 @@ import (
 )
 
 var CmdRun = &commands.Command{
-	UsageLine: "rm",
-	Short:     "rm container",
+	UsageLine: "ins",
+	Short:     "get ips",
 	Long: `
-rm container
+get ips
 `,
-	Run:    rm,
+	Run:    ins,
 }
+
+var dins = docker.NewInspect()
 
 func init() {
 	commands.AddGroup("default", CmdRun)
 }
 
-func rm(cmd *commands.Command, args []string) int {
-	docker.Run("Rm", args)
+func ins(cmd *commands.Command, args []string) int {
+	dins.AllIps()
 	return 0
 }

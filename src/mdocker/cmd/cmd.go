@@ -10,6 +10,8 @@ import (
 	_ "mdocker/cmd/commands/defaultGroup/start"
 	_ "mdocker/cmd/commands/defaultGroup/stop"
 	_ "mdocker/cmd/commands/defaultGroup/rm"
+	_ "mdocker/cmd/commands/defaultGroup/ins"
+	_ "mdocker/cmd/commands/defaultGroup/clear"
 )
 
 import (

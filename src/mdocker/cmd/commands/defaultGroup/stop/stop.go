@@ -2,6 +2,7 @@ package stop
 import (
 	"mdocker/cmd/commands"
 	"mdocker/models/v1"
+	"fmt"
 )
 
 var CmdRun = &commands.Command{
@@ -13,13 +14,14 @@ stop container
 	Run:    stop,
 }
 
-var dm = docker.NewDockerManage()
-
 func init() {
 	commands.AddGroup("default", CmdRun)
 }
 
 func stop(cmd *commands.Command, args []string) int {
-	dm.Stop(args, true)
+	res := docker.Run("Stop", args)
+	for _, r := range res {
+		fmt.Println(r)
+	}
 	return 0
 }

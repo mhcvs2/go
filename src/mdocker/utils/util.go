@@ -368,3 +368,30 @@ func PrintJson(showByte []byte) {
 	}
 	PrintAndExit(string(out.Bytes()), SuccessTemplate)
 }
+
+func PathExists(path string) (bool, error) {
+	_, err := os.Stat(path)
+	if err == nil {
+		return true, nil
+	}
+	if os.IsNotExist(err) {
+		return false, nil
+	}
+	return false, err
+}
+
+func DeleteFrom(s1, s2 []string) []string {
+	var res []string
+	for _, i1 := range s1 {
+		have := false
+		for _, i2 := range s2 {
+			if i1 == i2 {
+				have = true
+				break
+			}
+		}
+		if have {continue}
+		res = append(res, i1)
+	}
+	return res
+}

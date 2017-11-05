@@ -3,7 +3,9 @@ package docker
 import (
 	"mdocker/utils"
 	myLogger "mdocker/logger"
-	"fmt"
+	"mdocker/pipline"
+	"strings"
+	"mdocker/config"
 )
 
 type DockerManage struct {
@@ -11,56 +13,82 @@ type DockerManage struct {
 }
 
 func NewDockerManage() *DockerManage {
-	out, err := utils.Exec_shell("which docker")
+	_, err := utils.Exec_shell("which docker")
 	if err != nil {
 		myLogger.Log.Fatal("docker not found in this host")
 	}
-	return &DockerManage{out}
+	return &DockerManage{"docker"}
 }
 
 func (docker *DockerManage) getCmd(s string) string {
 	return docker.Cmd + " " +s
 }
 
-func (docker *DockerManage) baseManage(action, sub_cmd string, names []string, check bool) {
-	res := utils.OutIsNil(sub_cmd)
-	if check {
-		if res == false {
-			myLogger.Log.Fatal("no container to act.")
-		}
-	} else if res == false {
-		return
-	}
-	action_cmd := docker.getCmd(action)
-	if len(names) == 0 {
-		action_cmd = fmt.Sprintf(action_cmd + " $(%s)", sub_cmd)
-	} else {
-		for _, name := range names {
-			action_cmd += " " + name
-		}
-	}
+func (docker *DockerManage) baseManage(action, name string) string {
+
+	action_cmd := docker.getCmd(action + " " + name)
 	if _, err := utils.Exec_shell(action_cmd); err != nil {
-		myLogger.Log.Fatal(err.Error())
+		return err.Error()
 	} else {
-		myLogger.Log.Info("'"+action_cmd+"' success.")
+		return "'"+action_cmd+"' success."
 	}
 }
 
-func (docker *DockerManage) Stop(names []string, check bool) {
-	sub_cmd := docker.getCmd("ps -q")
-	docker.baseManage("stop", sub_cmd, names, check)
+func (docker *DockerManage) Stop(name string) string {
+	return docker.baseManage("stop", name)
 }
 
-func (docker *DockerManage) Start(names []string, check bool) {
-	sub_cmd := docker.getCmd("ps -qa")
-	docker.baseManage("start", sub_cmd, names, check)
+func (docker *DockerManage) Start(name string) string {
+	return docker.baseManage("start", name)
 }
 
-func (docker *DockerManage) Remove(names []string, check bool) {
-	sub_cmd := docker.getCmd("ps -qa")
-	docker.baseManage("rm -f", sub_cmd, names, check)
+func (docker *DockerManage) Rm(name string) string {
+	return docker.baseManage("rm -f", name)
 }
 
+func (docker *DockerManage) GetAllId(ignore bool) []string {
+	cmd := docker.getCmd("ps -qa")
+	out,_ := utils.Exec_shell(cmd)
+	if out != "" {
+		if ignore {
+			return utils.DeleteFrom(strings.Split(out, "\n"), config.Conf.Ignore)
+		} else {
+			return strings.Split(out, "\n")
+		}
+	} else {
+		return []string{}
+	}
+}
 
+func (docker *DockerManage) GetAllStartId(ignore bool) []string {
+	cmd := docker.getCmd("ps -q")
+	out,_ := utils.Exec_shell(cmd)
+	if out != "" {
+		if ignore {
+			return utils.DeleteFrom(strings.Split(out, "\n"), config.Conf.Ignore)
+		} else {
+			return strings.Split(out, "\n")
+		}
+	} else {
+		return []string{}
+	}
+}
+
+func (docker *DockerManage) GetAllStopId(ignore bool) (ids []string) {
+	all := docker.GetAllId(ignore)
+	start := docker.GetAllStartId(ignore)
+	return utils.DeleteFrom(all, start)
+}
+
+func Run(action string, names []string) []string {
+	docker := NewDockerManage()
+	if len(names) == 0 {
+		names = docker.GetAllId(true)
+	}
+	done := make(chan struct{})
+	defer close(done)
+	res := pipline.RunPipline(docker, action, names, done)
+	return res
+}
 
 
