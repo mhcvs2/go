@@ -3910,7 +3910,7 @@ type Container_Referral_Partner_Prospect struct {
 type Container_RemoteManagement_Graphs_SensorSpeed struct {
 	Entity
 
-	// The graph to display the server's fan speed.
+	// The graph to display the server's new speed.
 	Graph *[]byte `json:"graph,omitempty" xmlrpc:"graph,omitempty"`
 
 	// A title that may be used to display for the graph.
@@ -3981,7 +3981,7 @@ type Container_RemoteManagement_SensorReadingsWithGraphs struct {
 	// The raw data returned from the server's remote management card.
 	RawData []Container_RemoteManagement_SensorReading `json:"rawData,omitempty" xmlrpc:"rawData,omitempty"`
 
-	// The graph(s) to display the server's fan speeds.
+	// The graph(s) to display the server's new speeds.
 	SpeedGraphs []Container_RemoteManagement_Graphs_SensorSpeed `json:"speedGraphs,omitempty" xmlrpc:"speedGraphs,omitempty"`
 
 	// The graph(s) to display the server's cpu(s) and system temperatures.
