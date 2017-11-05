@@ -43,11 +43,11 @@ func httpPost() {
 func httpFormPost() {
 	//这里添加post的body内容
 	data := make(url.Values)
-	data["key"] = []string{"name"}
-	data["value"] = []string{"aaaaa"}
+	data["user"] = []string{"name"}
+	data["pass"] = []string{"aaaaa"}
 
 	//把post表单发送给目标服务器
-	res, err := http.PostForm("http://localhost:8080/v1/mhc", data)
+	res, err := http.PostForm("http://localhost:8081/login", data)
 	if err != nil {
 		fmt.Println(err.Error())
 		return

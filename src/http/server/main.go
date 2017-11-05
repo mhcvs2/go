@@ -30,11 +30,13 @@ func loginTask(w http.ResponseWriter, req *http.Request) {
 
 	//获取客户端通过GET/POST方式传递的参数
 	req.ParseForm()
-	param_userName, found1 := req.Form["userName"]
-	param_password, found2 := req.Form["password"]
+	param_userName, found1 := req.Form["user"]
+	param_password, found2 := req.Form["pass"]
 
 	fmt.Println(req.Form)
-	fmt.Println(req.Header.Get("Content-Type"))
+	fmt.Println(param_userName)
+	fmt.Println(param_password)
+	//fmt.Println(req.Header.Get("Content-Type"))
 	b, _ := ioutil.ReadAll(req.Body)
 	fmt.Println(b)
 
@@ -47,7 +49,7 @@ func loginTask(w http.ResponseWriter, req *http.Request) {
 	userName := param_userName[0]
 	password := param_password[0]
 
-	s := "userName:" + userName + ",password:" + password
+	s := "user:" + userName + ",pass:" + password
 	fmt.Println(s)
 
 	if userName == "zhangsan" && password == "123456" {
