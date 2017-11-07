@@ -146,10 +146,107 @@ var _Greeter_serviceDesc = grpc.ServiceDesc{
 	Metadata: "helloworld.proto",
 }
 
+// Client API for MhcTest service
+
+type MhcTestClient interface {
+	Test1(ctx context.Context, in *HelloRequest, opts ...grpc.CallOption) (*HelloReply, error)
+	Test2(ctx context.Context, in *HelloRequest, opts ...grpc.CallOption) (*HelloReply, error)
+}
+
+type mhcTestClient struct {
+	cc *grpc.ClientConn
+}
+
+func NewMhcTestClient(cc *grpc.ClientConn) MhcTestClient {
+	return &mhcTestClient{cc}
+}
+
+func (c *mhcTestClient) Test1(ctx context.Context, in *HelloRequest, opts ...grpc.CallOption) (*HelloReply, error) {
+	out := new(HelloReply)
+	err := grpc.Invoke(ctx, "/helloworld.MhcTest/Test1", in, out, c.cc, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *mhcTestClient) Test2(ctx context.Context, in *HelloRequest, opts ...grpc.CallOption) (*HelloReply, error) {
+	out := new(HelloReply)
+	err := grpc.Invoke(ctx, "/helloworld.MhcTest/Test2", in, out, c.cc, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// Server API for MhcTest service
+
+type MhcTestServer interface {
+	Test1(context.Context, *HelloRequest) (*HelloReply, error)
+	Test2(context.Context, *HelloRequest) (*HelloReply, error)
+}
+
+func RegisterMhcTestServer(s *grpc.Server, srv MhcTestServer) {
+	s.RegisterService(&_MhcTest_serviceDesc, srv)
+}
+
+func _MhcTest_Test1_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(HelloRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MhcTestServer).Test1(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/helloworld.MhcTest/Test1",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MhcTestServer).Test1(ctx, req.(*HelloRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _MhcTest_Test2_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(HelloRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MhcTestServer).Test2(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/helloworld.MhcTest/Test2",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MhcTestServer).Test2(ctx, req.(*HelloRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+var _MhcTest_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "helloworld.MhcTest",
+	HandlerType: (*MhcTestServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "Test1",
+			Handler:    _MhcTest_Test1_Handler,
+		},
+		{
+			MethodName: "Test2",
+			Handler:    _MhcTest_Test2_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "helloworld.proto",
+}
+
 func init() { proto.RegisterFile("helloworld.proto", fileDescriptor0) }
 
 var fileDescriptor0 = []byte{
-	// 161 bytes of a gzipped FileDescriptorProto
+	// 186 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x12, 0xc8, 0x48, 0xcd, 0xc9,
 	0xc9, 0x2f, 0xcf, 0x2f, 0xca, 0x49, 0xd1, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0xe2, 0x42, 0x88,
 	0x28, 0x29, 0x71, 0xf1, 0x78, 0x80, 0x78, 0x41, 0xa9, 0x85, 0xa5, 0xa9, 0xc5, 0x25, 0x42, 0x42,
@@ -157,8 +254,9 @@ var fileDescriptor0 = []byte{
 	0x1a, 0x17, 0x17, 0x54, 0x4d, 0x41, 0x4e, 0xa5, 0x90, 0x04, 0x17, 0x7b, 0x6e, 0x6a, 0x71, 0x71,
 	0x62, 0x3a, 0x4c, 0x11, 0x8c, 0x6b, 0xe4, 0xc9, 0xc5, 0xee, 0x5e, 0x94, 0x9a, 0x5a, 0x92, 0x5a,
 	0x24, 0x64, 0xc7, 0xc5, 0x11, 0x9c, 0x58, 0x09, 0xd6, 0x25, 0x24, 0xa1, 0x87, 0xe4, 0x02, 0x64,
-	0xcb, 0xa4, 0xc4, 0xb0, 0xc8, 0x14, 0xe4, 0x54, 0x2a, 0x31, 0x38, 0x09, 0x71, 0x09, 0x64, 0xe6,
-	0xeb, 0xa5, 0x17, 0x15, 0x24, 0xeb, 0xa5, 0x56, 0x24, 0xe6, 0x16, 0xe4, 0xa4, 0x16, 0x27, 0xb1,
-	0x81, 0x5d, 0x6f, 0x0c, 0x08, 0x00, 0x00, 0xff, 0xff, 0xa1, 0xa6, 0xfd, 0x48, 0xd1, 0x00, 0x00,
-	0x00,
+	0xcb, 0xa4, 0xc4, 0xb0, 0xc8, 0x14, 0xe4, 0x54, 0x2a, 0x31, 0x18, 0x35, 0x33, 0x72, 0xb1, 0xfb,
+	0x66, 0x24, 0x87, 0x80, 0x9c, 0x64, 0xcd, 0xc5, 0x0a, 0xa2, 0x0d, 0xc9, 0x31, 0x08, 0xa6, 0xd9,
+	0x88, 0x1c, 0xcd, 0x4e, 0x42, 0x5c, 0x02, 0x99, 0xf9, 0x7a, 0xe9, 0x45, 0x05, 0xc9, 0x7a, 0xa9,
+	0x15, 0x89, 0xb9, 0x05, 0x39, 0xa9, 0xc5, 0x49, 0x6c, 0xe0, 0x30, 0x34, 0x06, 0x04, 0x00, 0x00,
+	0xff, 0xff, 0x93, 0x93, 0x37, 0x63, 0x57, 0x01, 0x00, 0x00,
 }

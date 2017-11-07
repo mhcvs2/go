@@ -22,6 +22,7 @@ func main() {
 	}
 	defer conn.Close()
 	c := pb.NewGreeterClient(conn)
+	c2 := pb.NewMhcTestClient(conn)
 
 	name := defaultName
 	if len(os.Args) >1 {
@@ -31,5 +32,13 @@ func main() {
 	if err != nil {
 		log.Fatal("could not greet: %v", err)
 	}
+
+	log.Printf("Greeting: %s", r.Message)
+
+	r, err = c2.Test1(context.Background(), &pb.HelloRequest{Name: name})
+	if err != nil {
+		log.Fatal("could not test1: %v", err)
+	}
+
 	log.Printf("Greeting: %s", r.Message)
 }
