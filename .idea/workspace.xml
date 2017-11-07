@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8a8ebadb-9c57-4f57-8dc3-cabd2a1821d3" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/mdocker" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/grpc/client.go" afterPath="$PROJECT_DIR$/src/grpc/client.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/grpc/helloworld/helloworld.pb.go" afterPath="$PROJECT_DIR$/src/grpc/helloworld/helloworld.pb.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/grpc/helloworld/helloworld.proto" afterPath="$PROJECT_DIR$/src/grpc/helloworld/helloworld.proto" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/grpc/server.go" afterPath="$PROJECT_DIR$/src/grpc/server.go" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
