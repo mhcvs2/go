@@ -8,6 +8,7 @@ import (
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 	pb "grpc/helloworld"
+	"fmt"
 )
 
 const (
@@ -22,6 +23,7 @@ func (s *server) SayHello(ctx context.Context, in *pb.HelloRequest) (*pb.HelloRe
 }
 
 func (s *server2) Test1(ctx context.Context, in *pb.HelloRequest) (*pb.HelloReply, error) {
+	fmt.Println(in.Name)
 	return &pb.HelloReply{Message: "test1 " + in.Name}, nil
 }
 
