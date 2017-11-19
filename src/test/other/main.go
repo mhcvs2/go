@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"strconv"
+	"math/rand"
 )
 
 func t1() {
@@ -34,8 +35,29 @@ func t2() {
 	}
 }
 
+func t3() {
+	a := make(map[string]bool)
+	a["a"] = true
+	if v, ok := a["k"]; ok{
+		fmt.Println("yes")
+		fmt.Println(v)
+		fmt.Println(ok)
+	} else{
+		fmt.Println(v)
+		fmt.Println(ok)
+	}
+
+	fmt.Println(a["d"])
+
+}
+
+func t4() {
+	seed := rand.Int63n(4)
+	fmt.Println(seed)
+}
+
 
 
 func main() {
-	t2()
+	t4()
 }
