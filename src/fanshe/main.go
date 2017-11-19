@@ -165,10 +165,24 @@ hello test4
 */
 
 func t6() {
-	//value := reflect.ValueOf(p)
-	//fmt.Println(value.Kind())
+	p := make(map[string]string)
+	p["a"] = "aaa"
+	value := reflect.ValueOf(p)
+	fmt.Println(value.Kind())
+	fmt.Println(value.MapKeys())
+	for _, key := range value.MapKeys(){
+		fmt.Println(value.MapIndex(key))
+	}
+}
+
+func t7() {
+	p := []string{"a","b"}
+	value := reflect.ValueOf(p)
+	fmt.Println(value.Kind())
+	fmt.Println(value.Len())
+	fmt.Println(value.Index(0))
 }
 
 func main() {
-	t5()
+	t7()
 }
