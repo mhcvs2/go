@@ -56,8 +56,20 @@ func t4() {
 	fmt.Println(seed)
 }
 
+func t5() {
+	for i:= 0; i<10; i++ {
+		switch i {
+		case 1:
+			fmt.Println("11111111")
+		case 2:
+			fmt.Println("2222222")
+		default:
+			fmt.Println(i)
+		}
+	}
+}
 
 
 func main() {
-	t4()
+	t5()
 }
