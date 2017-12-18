@@ -6,10 +6,6 @@ import (
 	"unicode"
 )
 
-func main()  {
-	t3()
-}
-
 func t1()  {
 	line2 := "  "
 	res2 := strings.TrimSpace(line2)
@@ -52,4 +48,23 @@ func SplitOnNonLetters(s string) []string {
 func t3()  {
 	fmt.Println(strings.Repeat("hi ", 5))
 	// hi hi hi hi hi
+}
+
+func t4() {
+	a := "http://"
+	aa := "https://"
+	b := "http://sfsdfsdfsdfsa"
+	c := "ashttp://sfsdfsdfsdfsa"
+	fmt.Println(strings.Index(b,a))
+	fmt.Println(strings.Index(c,a))
+	fmt.Println(strings.Index(b,aa))
+	fmt.Println(strings.Index(c,aa))
+	//0
+	//2
+	//-1
+	//-1
+}
+
+func main()  {
+	t4()
 }
