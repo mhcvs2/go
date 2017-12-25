@@ -5,9 +5,9 @@ package main
 import (
 	"log"
 	"os"
-	"golang.org/x/net/context"
+	"context"
 	"google.golang.org/grpc"
-	pb "grpc/helloworld"
+	pb "grpc/t2/helloworld"
 )
 
 const (
@@ -28,12 +28,6 @@ func main() {
 	if len(os.Args) >1 {
 		name = os.Args[1]
 	}
-	//r, err := c.SayHello(context.Background(), &pb.HelloRequest{Name: name})
-	//if err != nil {
-	//	log.Fatal("could not greet: %v", err)
-	//}
-	//
-	//log.Printf("Greeting: %s", r.Message)
 
 	r, err := c2.Test1(context.Background(), &pb.HelloRequest{Name: name})
 	if err != nil {

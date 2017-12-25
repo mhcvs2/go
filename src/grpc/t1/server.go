@@ -1,4 +1,4 @@
-package main
+package t1
 
 // server.go
 
@@ -7,7 +7,7 @@ import (
 	"net"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
-	pb "grpc/helloworld"
+	pb "grpc/t1/helloworld"
 	"fmt"
 )
 

@@ -1,0 +1,33 @@
+
+syntax = "proto3";
+
+package helloworld;
+
+import "gogoproto/gogo.proto";
+import "google/protobuf/any.proto";
+import "grpc/t2/plugin/plugin.proto";
+
+// The request message containing the user's name.
+message HelloRequest {
+    string name = 1;
+}
+
+// The response message containing the greetings
+message HelloReply {
+    Name name = 1;
+}
+
+service MhcTest {
+    rpc Test1(HelloRequest) returns (HelloReply) {}
+}
+
+message Name {
+    option (docker.protobuf.plugin.store_object) = {
+		watch_selectors: {
+			id: true
+			id_prefix: true
+		} };
+
+    // ID specifies the identity of the node.
+    string name = 1;
+}
