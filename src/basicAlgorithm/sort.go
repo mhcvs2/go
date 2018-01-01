@@ -15,10 +15,7 @@ func insertSort() {
 			guard := data[i]
 			j := i-1
 			data[i] = data[i-1]
-			for {
-				if j<0 || guard >= data[j] {
-					break
-				}
+			for j>=0 && guard < data[j] {
 				data[j+1] = data[j]
 				j--
 			}
