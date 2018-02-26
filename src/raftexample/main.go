@@ -17,7 +17,6 @@ package main
 import (
 	"flag"
 	"strings"
-
 	"github.com/coreos/etcd/raft/raftpb"
 )
 
