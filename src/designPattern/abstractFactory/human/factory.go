@@ -6,6 +6,8 @@ const (
 	BLACKHUMAN HumanType = iota
 	YELLOWHUMAN
 	WHITEHUMAN
+	FEMALEBLACKHUMAN
+	MALEBLACKHUMAN
 )
 
 func CreateHuman(t HumanType) Human {
@@ -21,3 +23,13 @@ func CreateHuman(t HumanType) Human {
 	}
 }
 
+func CreateSexHuman(t HumanType) SexHuman {
+	switch t {
+	case FEMALEBLACKHUMAN:
+		return &FemaleBlackHuman{}
+	case MALEBLACKHUMAN:
+		return &MaleBlackHuman{}
+	default:
+		return nil
+	}
+}
