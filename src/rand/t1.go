@@ -13,6 +13,13 @@ func t1() {
 	}
 }
 
+func t2() {
+	r := rand.New(rand.NewSource(time.Now().UnixNano()))
+	for i:=0; i<10; i++ {
+		fmt.Println(r.Int())
+	}
+}
+
 func main() {
-	t1()
+	t2()
 }
