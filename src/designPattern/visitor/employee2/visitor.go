@@ -26,9 +26,9 @@ func (v *Visitor)getCommonEmployeeInfo(ce ICommonEmployee) string {
 }
 
 func (v *Visitor)Visit(employee interface{}){
-	if reflect.ValueOf(employee).Type() == reflect.ValueOf(new(commonEmployee)).Type(){
+	if reflect.TypeOf(employee) == reflect.TypeOf(new(commonEmployee)){
 		fmt.Println(v.getCommonEmployeeInfo(employee.(*commonEmployee)))
-	} else if reflect.ValueOf(employee).Type() == reflect.ValueOf(new(manager)).Type(){
+	} else if reflect.TypeOf(employee) == reflect.TypeOf(new(manager)){
 		fmt.Println(v.getManagerInfo(employee.(*manager)))
 	} else {
 		fmt.Println("unknown type")

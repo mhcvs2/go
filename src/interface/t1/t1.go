@@ -2,10 +2,6 @@ package main
 
 import "fmt"
 
-/*
-不能一个interface 跨两个struct
-*/
-
 type Type1 interface {
 	A(a string) string
 	B(b int) int
@@ -34,10 +30,10 @@ type Concront struct {
 	Base
 }
 
-func (con *Concront)A(a string) string {
-	fmt.Println("A in concront")
-	return con.Base.A(a)
-}
+//func (con *Concront)A(a string) string {
+//	fmt.Println("A in concront")
+//	return con.Base.A(a)
+//}
 
 func (con *Concront)B(b int) int {
 	return b
