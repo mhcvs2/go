@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"sync/atomic"
+	"time"
 )
 
 func t11() {
@@ -22,8 +23,11 @@ func t12() {
 	fmt.Println(a)
 }
 
+func t13() {
+	time.Sleep(time.Second * 5)
+}
 
 
 func main() {
-	t12()
+	t13()
 }

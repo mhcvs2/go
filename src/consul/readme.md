@@ -1,0 +1,1 @@
+go get github.com/hashicorp/consul/api
