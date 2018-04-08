@@ -5,6 +5,7 @@ import (
 	"path/filepath"
 	"fmt"
 	"github.com/mhcvs2/godatastructure/util"
+	"runtime"
 )
 
 func source(files []string) <-chan string {
@@ -46,6 +47,7 @@ func sink(in <-chan string) {
 }
 
 func main() {
+	runtime.GOMAXPROCS(runtime.NumCPU()) // Use all the machine's cores
 	files, err := util.GetSubFiles("/root")
 	suffixes := []string{".txt", ".mp4"}
 	if err != nil {
