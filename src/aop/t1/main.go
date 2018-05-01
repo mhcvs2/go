@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/gogap/aop"
 	"fmt"
+	"github.com/gogap/aop"
 )
 
 type Auth struct {}
