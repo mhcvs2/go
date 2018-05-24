@@ -4,11 +4,11 @@ RUN mkdir /go/src/update-deploy-image
 
 WORKDIR /go/src/update-deploy-image
 
-VOLUME /out /usr/local/bin
+RUN go get -d  k8s.io/client-go/tools/clientcmd
+
+RUN go get -d k8s.io/api/apps/v1beta1
 
 COPY . .
 
-RUN go get -d  k8s.io/client-go/tools/clientcmd \
-&& go get -d k8s.io/api/apps/v1beta1 \
-&& go install -v update-deploy-image \
-&& cp /go/bin/update-deploy-image /out/update-deploy-image
+RUN go install -v update-deploy-image
+RUN echo "copy to host..." && cp /go/bin/update-deploy-image /out/update-deploy-image
