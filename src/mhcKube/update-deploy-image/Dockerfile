@@ -8,6 +8,6 @@ RUN go get -d  k8s.io/client-go/tools/clientcmd
 
 RUN go get -d k8s.io/api/apps/v1beta1
 
-COPY . .
+COPY main.go .
 
 RUN go install -v update-deploy-image
