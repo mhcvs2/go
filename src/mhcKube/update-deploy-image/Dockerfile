@@ -8,4 +8,4 @@ VOLUME /out /usr/local/bin
 
 COPY . .
 
-RUN go build -v update-deploy-image && cp ./update-deploy-image /out/update-deploy-image
+RUN go install -v update-deploy-image && cp /go/bin/update-deploy-image /out/update-deploy-image
