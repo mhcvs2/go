@@ -53,9 +53,6 @@ func main() {
 	}
 
 	deployment, err := clientset.AppsV1beta1().Deployments("default").Get(*deploymentName, metav1.GetOptions{})
-	if err != nil {
-		panic(err.Error())
-	}
 
 	if errors.IsNotFound(err) {
 		fmt.Printf("Deployment not found\n")
