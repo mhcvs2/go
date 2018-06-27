@@ -1,61 +1,91 @@
 package main
 
-import "fmt"
+import (
+	"reflect"
+	"runtime"
+	"strings"
+	"fmt"
+)
 
-type Mhc struct {
-	A string
+
+type MethodMetadata struct {
+	Method reflect.Method
+	File   string
+	Line   int
 }
 
-func Bianbie(v interface{}) {
-	switch v.(type) {
-	case int:
-		fmt.Println("int")
-	case float64:
-		fmt.Println("float64")
-	case string:
-		fmt.Println("string")
-	case Mhc:
-		fmt.Println("struct")
-	case *Mhc:
-		fmt.Println("struct pointer")
-	case map[string]string:
-		fmt.Println("map[string]string")
-	case map[string]interface{}:
-		fmt.Println("map[string]interface")
-	case []string:
-		fmt.Println("[]string")
-	case []interface{}:
-		fmt.Println("[]interface")
-	default:
-		fmt.Println("not parse")
+
+func getFuncMetadata(fn interface{}) (metadata MethodMetadata, err error) {
+	v := reflect.ValueOf(fn)
+
+	pc := runtime.FuncForPC(v.Pointer())
+
+	name := strings.TrimRight(pc.Name(), "-fm")
+	name = strings.Replace(name, "*", "", 1)
+
+	m := reflect.Method{
+		Name:    name,
+		PkgPath: "",
+		Type:    reflect.TypeOf(fn),
+		Func:    v,
+		Index:   -1,
+	}
+
+	metadata.File, metadata.Line = pc.FileLine(v.Pointer())
+	metadata.Method = m
+
+	return
+}
+
+
+type Proxy struct {
+	funcs  map[string]MethodMetadata
+}
+
+func NewProxy() *Proxy {
+	return &Proxy{
+		funcs:  make(map[string]MethodMetadata),
 	}
 }
 
-func t21() {
-	Bianbie(1)
-	Bianbie(0.2)
-	Bianbie("aaaa")
-	Bianbie(Mhc{})
-	Bianbie(&Mhc{})
+func (p *Proxy) Method(fn interface{}) (method interface{}) {
 
-	a := make(map[string]string)
-	Bianbie(a)
-	b := make(map[string]int)
-	Bianbie(b)
-
-	Bianbie([]string{"1", "2"})
-	Bianbie([]int{1, 2})
+	methodName := ""
+	methodMetadata, err := getFuncMetadata(fn)
+	p.registryFunc(methodMetadata)
+	if err != nil {
+		panic(err)
+	} else {
+		methodName = methodMetadata.Method.Name
+	}
+	if metadata, exist := p.funcs[methodName]; exist {
+		method = metadata.Method.Func.Interface()
+		return
+	}
+	return
 }
 
-//int
-//float64
-//string
-//struct
-//struct pointer
-//map[string]string
-//not parse
-//[]string
-//not parse
+func (p *Proxy) registryFunc(metadata MethodMetadata) {
+	fmt.Println("registry---")
+	p.funcs[metadata.Method.Name] = metadata
+}
+
+//---------------------------------------------------------------------
+type Auth struct {}
+
+func (p *Auth) Login(userName, password string) bool {
+	fmt.Println("@Login", userName, password)
+	if userName == "mhc" && password == "123" {
+		return true
+	}
+	return false
+}
+
+//--------------------------------------------------------------
+func t21() {
+	ret := NewProxy().Method(new(Auth).Login).(func(string, string) bool)("mhc", "haha")
+	fmt.Println(ret)
+}
 
 func main() {
 	t21()
