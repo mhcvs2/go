@@ -10,7 +10,7 @@ import (
 const file = "./test.gob"
 
 type User struct {
-	Name, Pass string
+	Name, Pass s
 }
 
 func t1() {
