@@ -80,7 +80,7 @@ func exec_shell3(s string) (error) {
 }
 
 func t3() {
-	exec_shell3("bash /tmp/job1.sh")
+	exec_shell3("ls /")
 }
 
 func exec_shell4(s string) (error) {
@@ -101,7 +101,7 @@ func exec_shell4(s string) (error) {
 }
 
 func t4() {
-	exec_shell4("bash /tmp/job1.sh")
+	exec_shell4("ls /")
 }
 
 
