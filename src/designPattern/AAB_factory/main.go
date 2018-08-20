@@ -1,6 +1,6 @@
 package main
 
-import "designPattern/factory/human"
+import "designPattern/AAB_factory/human"
 
 func main() {
 	black := human.CreateHuman(human.BLACKHUMAN)
