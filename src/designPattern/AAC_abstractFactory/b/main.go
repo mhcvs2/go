@@ -1,6 +1,6 @@
 package main
 
-import "designPattern/abstractFactory/human"
+import "designPattern/AAC_abstractFactory/b/human"
 
 func main() {
 	black := human.CreateSexHuman(human.FEMALEBLACKHUMAN)
