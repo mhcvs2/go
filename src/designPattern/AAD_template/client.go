@@ -1,6 +1,6 @@
 package main
 
-import "designPattern/template/hanma"
+import "designPattern/AAD_template/hanma"
 
 func main() {
 	h1 := hanma.HanmaH1Model{}
