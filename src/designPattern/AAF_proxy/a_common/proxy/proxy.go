@@ -1,7 +1,7 @@
 package proxy
 
 import (
-	"designPattern/proxy/common/gamePlayer"
+	"designPattern/AAF_proxy/a_common/gamePlayer"
 	"fmt"
 )
 

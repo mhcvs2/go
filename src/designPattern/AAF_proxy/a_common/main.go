@@ -1,6 +1,6 @@
 package main
 
-import "designPattern/proxy/common/proxy"
+import "designPattern/AAF_proxy/a_common/proxy"
 
 func main() {
 	p := proxy.NewPlayerProxy("mhc")

@@ -1,6 +1,6 @@
 package main
 
-import "designPattern/builder/director"
+import "designPattern/AAE_builder/director"
 
 func main() {
 	d := director.NewDirector()

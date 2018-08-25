@@ -1,8 +1,8 @@
 package director
 
 import (
-	"designPattern/builder/car"
-	"designPattern/builder/carBuilder"
+	"designPattern/AAE_builder/car"
+	"designPattern/AAE_builder/carBuilder"
 )
 
 type Director struct {

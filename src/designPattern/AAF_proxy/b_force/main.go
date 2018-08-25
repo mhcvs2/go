@@ -1,6 +1,6 @@
 package main
 
-import "designPattern/proxy/force/gamePlayer"
+import "designPattern/AAF_proxy/b_force/gamePlayer"
 
 func main() {
 	p := gamePlayer.NewPlayer("mhc")
