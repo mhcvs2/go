@@ -1,11 +1,11 @@
-package main
+package a
 
 import (
 	"fmt"
 	"math/rand"
 	"bytes"
 	"time"
-	"designPattern/prototype/adv"
+	"designPattern/AAG_prototype/a/adv"
 	"sync"
 )
 
