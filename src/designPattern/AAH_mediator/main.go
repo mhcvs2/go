@@ -1,6 +1,6 @@
 package main
 
-import "designPattern/mediator/colleague"
+import "designPattern/AAH_mediator/colleague"
 
 func main() {
 	mediator := colleague.NewMediator()
