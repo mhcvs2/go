@@ -1,6 +1,6 @@
 package main
 
-import "designPattern/command/commands"
+import "designPattern/AAI_command/commands"
 
 func main() {
 

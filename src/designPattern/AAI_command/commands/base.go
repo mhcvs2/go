@@ -1,6 +1,6 @@
 package commands
 
-import "designPattern/command/group"
+import "designPattern/AAI_command/group"
 
 type ICommand interface {
 	Execute()
