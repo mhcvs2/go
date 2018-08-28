@@ -51,8 +51,8 @@ type Father struct {
 	level LevelType
 }
 
-func NewFather(level LevelType) *Father {
-	return &Father{level: level}
+func NewFather() *Father {
+	return &Father{level: FATHER}
 }
 
 func (h *Father) Response(wm IWoman) {
@@ -72,8 +72,8 @@ type Husband struct {
 	level LevelType
 }
 
-func NewHusband(level LevelType) *Husband {
-	return &Husband{level: level}
+func NewHusband() *Husband {
+	return &Husband{level: FATHER}
 }
 
 func (h *Husband) Response(wm IWoman) {
@@ -92,8 +92,8 @@ type Son struct {
 	level LevelType
 }
 
-func NewSon(level LevelType) *Son {
-	return &Son{level: level}
+func NewSon() *Son {
+	return &Son{level: SON}
 }
 
 func (h *Son) Response(wm IWoman) {

@@ -1,11 +1,11 @@
 package main
 
-import "designPattern/responsibilityChain/handler"
+import "designPattern/AAJ_responsibilityChain/a/handler"
 
 func main() {
-	f := handler.NewHandler(handler.NewFather(handler.FATHER))
-	h := handler.NewHandler(handler.NewHusband(handler.HUSBAND))
-	s := handler.NewHandler(handler.NewSon(handler.SON))
+	f := handler.NewHandler(handler.NewFather())
+	h := handler.NewHandler(handler.NewHusband())
+	s := handler.NewHandler(handler.NewSon())
 	f.SetNextHandler(h)
 	h.SetNextHandler(s)
 
