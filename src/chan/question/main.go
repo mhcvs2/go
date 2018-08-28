@@ -63,7 +63,7 @@ func interact( questions chan polar, answers chan cartesian) {
 		}
 		var radius, seite float64
 		if _, err := fmt.Sscanf(line, "%f %f", &radius, &seite); err != nil{
-			fmt.Println(os.Stderr, "invalid input")
+			fmt.Fprintf(os.Stderr, "invalid input\n")
 			fmt.Println(err)
 			continue
 		}
