@@ -1,6 +1,6 @@
 package main
 
-import "designPattern/adapter/user"
+import "designPattern/AAM_adapter/user"
 
 func main() {
 	var ui user.IUserInfo
