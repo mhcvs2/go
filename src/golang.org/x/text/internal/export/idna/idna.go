@@ -319,7 +319,7 @@ func (p *Profile) process(s string, toASCII bool) (string, error) {
 	for ; !labels.done(); labels.next() {
 		label := labels.label()
 		if label == "" {
-			// Empty labels are not okay. The label iterator skips the last
+			// Empty labels are not okay. The label AAN_iterator skips the last
 			// label if it is empty.
 			if err == nil && p.verifyDNSLength {
 				err = &labelError{s, "A4"}

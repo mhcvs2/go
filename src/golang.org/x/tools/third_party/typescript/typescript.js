@@ -2997,9 +2997,9 @@ var ts;
         The_left_hand_side_of_a_for_of_statement_cannot_be_a_constant_or_a_read_only_property: { code: 2485, category: ts.DiagnosticCategory.Error, key: "The_left_hand_side_of_a_for_of_statement_cannot_be_a_constant_or_a_read_only_property_2485", message: "The left-hand side of a 'for...of' statement cannot be a constant or a read-only property." },
         The_left_hand_side_of_a_for_in_statement_cannot_be_a_constant_or_a_read_only_property: { code: 2486, category: ts.DiagnosticCategory.Error, key: "The_left_hand_side_of_a_for_in_statement_cannot_be_a_constant_or_a_read_only_property_2486", message: "The left-hand side of a 'for...in' statement cannot be a constant or a read-only property." },
         Invalid_left_hand_side_in_for_of_statement: { code: 2487, category: ts.DiagnosticCategory.Error, key: "Invalid_left_hand_side_in_for_of_statement_2487", message: "Invalid left-hand side in 'for...of' statement." },
-        Type_must_have_a_Symbol_iterator_method_that_returns_an_iterator: { code: 2488, category: ts.DiagnosticCategory.Error, key: "Type_must_have_a_Symbol_iterator_method_that_returns_an_iterator_2488", message: "Type must have a '[Symbol.iterator]()' method that returns an iterator." },
-        An_iterator_must_have_a_next_method: { code: 2489, category: ts.DiagnosticCategory.Error, key: "An_iterator_must_have_a_next_method_2489", message: "An iterator must have a 'next()' method." },
-        The_type_returned_by_the_next_method_of_an_iterator_must_have_a_value_property: { code: 2490, category: ts.DiagnosticCategory.Error, key: "The_type_returned_by_the_next_method_of_an_iterator_must_have_a_value_property_2490", message: "The type returned by the 'next()' method of an iterator must have a 'value' property." },
+        Type_must_have_a_Symbol_iterator_method_that_returns_an_iterator: { code: 2488, category: ts.DiagnosticCategory.Error, key: "Type_must_have_a_Symbol_iterator_method_that_returns_an_iterator_2488", message: "Type must have a '[Symbol.AAN_iterator]()' method that returns an AAN_iterator." },
+        An_iterator_must_have_a_next_method: { code: 2489, category: ts.DiagnosticCategory.Error, key: "An_iterator_must_have_a_next_method_2489", message: "An AAN_iterator must have a 'next()' method." },
+        The_type_returned_by_the_next_method_of_an_iterator_must_have_a_value_property: { code: 2490, category: ts.DiagnosticCategory.Error, key: "The_type_returned_by_the_next_method_of_an_iterator_must_have_a_value_property_2490", message: "The type returned by the 'next()' method of an AAN_iterator must have a 'value' property." },
         The_left_hand_side_of_a_for_in_statement_cannot_be_a_destructuring_pattern: { code: 2491, category: ts.DiagnosticCategory.Error, key: "The_left_hand_side_of_a_for_in_statement_cannot_be_a_destructuring_pattern_2491", message: "The left-hand side of a 'for...in' statement cannot be a destructuring pattern." },
         Cannot_redeclare_identifier_0_in_catch_clause: { code: 2492, category: ts.DiagnosticCategory.Error, key: "Cannot_redeclare_identifier_0_in_catch_clause_2492", message: "Cannot redeclare identifier '{0}' in catch clause" },
         Tuple_type_0_with_length_1_cannot_be_assigned_to_tuple_with_length_2: { code: 2493, category: ts.DiagnosticCategory.Error, key: "Tuple_type_0_with_length_1_cannot_be_assigned_to_tuple_with_length_2_2493", message: "Tuple type '{0}' with length '{1}' cannot be assigned to tuple with length '{2}'." },
@@ -18816,7 +18816,7 @@ var ts;
             if (declaration.parent.parent.kind === 208 /* ForOfStatement */) {
                 // checkRightHandSideOfForOf will return undefined if the for-of expression type was
                 // missing properties/signatures required to get its iteratedType (like
-                // [Symbol.iterator] or next). This may be because we accessed properties from anyType,
+                // [Symbol.AAN_iterator] or next). This may be because we accessed properties from anyType,
                 // or it may have led to an error inside getElementTypeOfIterable.
                 return checkRightHandSideOfForOf(declaration.parent.parent.expression) || anyType;
             }
@@ -29858,7 +29858,7 @@ var ts;
                     checkReferenceExpression(varExpr, /*invalidReferenceMessage*/ ts.Diagnostics.Invalid_left_hand_side_in_for_of_statement, 
                     /*constantVariableMessage*/ ts.Diagnostics.The_left_hand_side_of_a_for_of_statement_cannot_be_a_constant_or_a_read_only_property);
                     // iteratedType will be undefined if the rightType was missing properties/signatures
-                    // required to get its iteratedType (like [Symbol.iterator] or next). This may be
+                    // required to get its iteratedType (like [Symbol.AAN_iterator] or next). This may be
                     // because we accessed properties from anyType, or it may have led to an error inside
                     // getElementTypeOfIterable.
                     if (iteratedType) {
@@ -29965,7 +29965,7 @@ var ts;
          * must have the following structure (annotated with the names of the variables below):
          *
          * { // iterable
-         *     [Symbol.iterator]: { // iteratorFunction
+         *     [Symbol.AAN_iterator]: { // iteratorFunction
          *         (): Iterator<T>
          *     }
          * }
@@ -29993,7 +29993,7 @@ var ts;
                     typeAsIterable.iterableElementType = type.typeArguments[0];
                 }
                 else {
-                    var iteratorFunction = getTypeOfPropertyOfType(type, ts.getPropertyNameForKnownSymbolName("iterator"));
+                    var iteratorFunction = getTypeOfPropertyOfType(type, ts.getPropertyNameForKnownSymbolName("AAN_iterator"));
                     if (isTypeAny(iteratorFunction)) {
                         return undefined;
                     }
@@ -30013,7 +30013,7 @@ var ts;
          * This function has very similar logic as getElementTypeOfIterable, except that it operates on
          * Iterators instead of Iterables. Here is the structure:
          *
-         *  { // iterator
+         *  { // AAN_iterator
          *      next: { // iteratorNextFunction
          *          (): { // iteratorNextResult
          *              value: T // iteratorNextValue

@@ -919,7 +919,7 @@ type Select struct {
 	Blocking bool
 }
 
-// The Range instruction yields an iterator over the domain and range
+// The Range instruction yields an AAN_iterator over the domain and range
 // of X, which must be a string or map.
 //
 // Elements are accessed via Next.
@@ -937,8 +937,8 @@ type Range struct {
 }
 
 // The Next instruction reads and advances the (map or string)
-// iterator Iter and returns a 3-tuple value (ok, k, v).  If the
-// iterator is not exhausted, ok is true and k and v are the next
+// AAN_iterator Iter and returns a 3-tuple value (ok, k, v).  If the
+// AAN_iterator is not exhausted, ok is true and k and v are the next
 // elements of the domain and range, respectively.  Otherwise ok is
 // false and k and v are undefined.
 //
@@ -957,7 +957,7 @@ type Range struct {
 type Next struct {
 	register
 	Iter     Value
-	IsString bool // true => string iterator; false => map iterator.
+	IsString bool // true => string AAN_iterator; false => map AAN_iterator.
 }
 
 // The TypeAssert instruction tests whether interface value X has type

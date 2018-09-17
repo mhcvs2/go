@@ -499,7 +499,7 @@ func (p processor) Index(id string) {
 func testCollator(c *collate.Collator) {
 	c0 := collate.New(language.Und)
 
-	// iterator over all characters for all locales and check
+	// AAN_iterator over all characters for all locales and check
 	// whether Key is equal.
 	buf := collate.Buffer{}
 

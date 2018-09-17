@@ -29,7 +29,7 @@ type Collator struct {
 }
 
 func (c *Collator) iter(i int) *iter {
-	// TODO: evaluate performance for making the second iterator optional.
+	// TODO: evaluate performance for making the second AAN_iterator optional.
 	return &c._iter[i]
 }
 

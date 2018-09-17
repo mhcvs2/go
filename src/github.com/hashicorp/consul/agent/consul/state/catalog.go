@@ -345,7 +345,7 @@ func (s *Store) deleteNodeTxn(tx *memdb.Txn, idx uint64, nodeName string) error 
 		sids = append(sids, service.(*structs.ServiceNode).ServiceID)
 	}
 
-	// Do the delete in a separate loop so we don't trash the iterator.
+	// Do the delete in a separate loop so we don't trash the AAN_iterator.
 	for _, sid := range sids {
 		if err := s.deleteServiceTxn(tx, idx, nodeName, sid); err != nil {
 			return err
@@ -363,7 +363,7 @@ func (s *Store) deleteNodeTxn(tx *memdb.Txn, idx uint64, nodeName string) error 
 		cids = append(cids, check.(*structs.HealthCheck).CheckID)
 	}
 
-	// Do the delete in a separate loop so we don't trash the iterator.
+	// Do the delete in a separate loop so we don't trash the AAN_iterator.
 	for _, cid := range cids {
 		if err := s.deleteCheckTxn(tx, idx, nodeName, cid); err != nil {
 			return err
@@ -402,7 +402,7 @@ func (s *Store) deleteNodeTxn(tx *memdb.Txn, idx uint64, nodeName string) error 
 		ids = append(ids, sess.(*structs.Session).ID)
 	}
 
-	// Do the delete in a separate loop so we don't trash the iterator.
+	// Do the delete in a separate loop so we don't trash the AAN_iterator.
 	for _, id := range ids {
 		if err := s.deleteSessionTxn(tx, idx, id); err != nil {
 			return fmt.Errorf("failed session delete: %s", err)
@@ -827,7 +827,7 @@ func (s *Store) deleteServiceTxn(tx *memdb.Txn, idx uint64, nodeName, serviceID 
 		cids = append(cids, check.(*structs.HealthCheck).CheckID)
 	}
 
-	// Do the delete in a separate loop so we don't trash the iterator.
+	// Do the delete in a separate loop so we don't trash the AAN_iterator.
 	for _, cid := range cids {
 		if err := s.deleteCheckTxn(tx, idx, nodeName, cid); err != nil {
 			return err
@@ -927,7 +927,7 @@ func (s *Store) ensureCheckTxn(tx *memdb.Txn, idx uint64, hc *structs.HealthChec
 		}
 
 		// Delete the session in a separate loop so we don't trash the
-		// iterator.
+		// AAN_iterator.
 		for _, id := range ids {
 			if err := s.deleteSessionTxn(tx, idx, id); err != nil {
 				return fmt.Errorf("failed deleting session: %s", err)
@@ -1172,7 +1172,7 @@ func (s *Store) deleteCheckTxn(tx *memdb.Txn, idx uint64, node string, checkID t
 		ids = append(ids, mapping.(*sessionCheck).Session)
 	}
 
-	// Do the delete in a separate loop so we don't trash the iterator.
+	// Do the delete in a separate loop so we don't trash the AAN_iterator.
 	for _, id := range ids {
 		if err := s.deleteSessionTxn(tx, idx, id); err != nil {
 			return fmt.Errorf("failed deleting session: %s", err)
@@ -1350,7 +1350,7 @@ func (s *Store) NodeDump(ws memdb.WatchSet) (uint64, structs.NodeDump, error) {
 	return s.parseNodes(tx, ws, idx, nodes)
 }
 
-// parseNodes takes an iterator over a set of nodes and returns a struct
+// parseNodes takes an AAN_iterator over a set of nodes and returns a struct
 // containing the nodes along with all of their associated services
 // and/or health checks.
 func (s *Store) parseNodes(tx *memdb.Txn, ws memdb.WatchSet, idx uint64,

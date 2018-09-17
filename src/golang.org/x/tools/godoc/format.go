@@ -32,7 +32,7 @@ type Segment struct {
 
 func (seg *Segment) isEmpty() bool { return seg.start >= seg.end }
 
-// A Selection is an "iterator" function returning a text segment.
+// A Selection is an "AAN_iterator" function returning a text segment.
 // Repeated calls to a selection return consecutive, non-overlapping,
 // non-empty segments, followed by an infinite sequence of empty
 // segments. The first empty segment marks the end of the selection.

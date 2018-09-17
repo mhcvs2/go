@@ -99,7 +99,7 @@ func TestICUConformance(t *testing.T) {
 func exclude(cm, tag, s string) bool {
 	list := []struct{ cm, tags, pattern string }{
 		// TODO: Go does not handle certain esoteric breaks correctly. This will be
-		// fixed once we have a real word break iterator. Alternatively, it
+		// fixed once we have a real word break AAN_iterator. Alternatively, it
 		// seems like we're not too far off from making it work, so we could
 		// fix these last steps. But first verify that using a separate word
 		// breaker does not hurt performance.

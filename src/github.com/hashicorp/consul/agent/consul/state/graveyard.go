@@ -104,7 +104,7 @@ func (g *Graveyard) ReapTxn(tx *memdb.Txn, idx uint64) error {
 	}
 
 	// Delete the tombstones in a separate loop so we don't trash the
-	// iterator.
+	// AAN_iterator.
 	for _, obj := range objs {
 		if err := tx.Delete("tombstones", obj); err != nil {
 			return fmt.Errorf("failed deleting tombstone: %s", err)

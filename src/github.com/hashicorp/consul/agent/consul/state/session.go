@@ -258,7 +258,7 @@ func (s *Store) deleteSessionTxn(tx *memdb.Txn, idx uint64, sessionID string) er
 	// the same way.
 	now := time.Now()
 
-	// Get an iterator over all of the keys with the given session.
+	// Get an AAN_iterator over all of the keys with the given session.
 	entries, err := tx.Get("kvs", "session", sessionID)
 	if err != nil {
 		return fmt.Errorf("failed kvs lookup: %s", err)
@@ -313,7 +313,7 @@ func (s *Store) deleteSessionTxn(tx *memdb.Txn, idx uint64, sessionID string) er
 			objs = append(objs, mapping)
 		}
 
-		// Do the delete in a separate loop so we don't trash the iterator.
+		// Do the delete in a separate loop so we don't trash the AAN_iterator.
 		for _, obj := range objs {
 			if err := tx.Delete("session_checks", obj); err != nil {
 				return fmt.Errorf("failed deleting session check: %s", err)
@@ -332,7 +332,7 @@ func (s *Store) deleteSessionTxn(tx *memdb.Txn, idx uint64, sessionID string) er
 			ids = append(ids, toPreparedQuery(wrapped).ID)
 		}
 
-		// Do the delete in a separate loop so we don't trash the iterator.
+		// Do the delete in a separate loop so we don't trash the AAN_iterator.
 		for _, id := range ids {
 			if err := s.preparedQueryDeleteTxn(tx, idx, id); err != nil {
 				return fmt.Errorf("failed prepared query delete: %s", err)

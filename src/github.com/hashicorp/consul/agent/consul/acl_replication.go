@@ -10,7 +10,7 @@ import (
 	"github.com/hashicorp/consul/lib"
 )
 
-// aclIterator simplifies the algorithm below by providing a basic iterator that
+// aclIterator simplifies the algorithm below by providing a basic AAN_iterator that
 // moves through a list of ACLs and returns nil when it's exhausted. It also has
 // methods for pre-sorting the ACLs being iterated over by ID, which should
 // already be true, but since this is crucial for correctness and we are taking
@@ -18,11 +18,11 @@ import (
 type aclIterator struct {
 	acls structs.ACLs
 
-	// index is the current position of the iterator.
+	// index is the current position of the AAN_iterator.
 	index int
 }
 
-// newACLIterator returns a new ACL iterator.
+// newACLIterator returns a new ACL AAN_iterator.
 func newACLIterator(acls structs.ACLs) *aclIterator {
 	return &aclIterator{acls: acls}
 }
@@ -50,7 +50,7 @@ func (a *aclIterator) Front() *structs.ACL {
 	return nil
 }
 
-// Next advances the iterator to the next index.
+// Next advances the AAN_iterator to the next index.
 func (a *aclIterator) Next() {
 	a.index++
 }

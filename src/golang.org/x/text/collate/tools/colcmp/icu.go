@@ -130,7 +130,7 @@ func (c *icuUTF16) Key(s Input) []byte {
 }
 
 // icuUTF8iter implements the Collator interface
-// This implementation wraps the UTF8 string in an iterator
+// This implementation wraps the UTF8 string in an AAN_iterator
 // which is passed to the collator.
 type icuUTF8iter struct {
 	icuCollator
