@@ -92,6 +92,7 @@ func t4() {
 	value := reflect.ValueOf(a4)
 
 	fmt.Println(value.Kind())
+	fmt.Println(value.Type().Name())
 	fmt.Println(value.NumField())
 	fmt.Println("-------------")
 	for i := 0; i < value.NumField(); i++ {
@@ -105,6 +106,19 @@ func t4() {
 		fmt.Println("kong")
 	}
 }
+//
+//struct
+//Test4
+//2
+//-------------
+//122
+//sadad
+//-------------
+//122
+//<invalid reflect.Value>
+//<invalid reflect.Value>
+//kong
+
 
 type Test5 struct {
 	X int
@@ -184,5 +198,5 @@ func t7() {
 }
 
 func main() {
-	t7()
+	t4()
 }
