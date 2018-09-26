@@ -2,7 +2,7 @@ package observable
 
 import (
 	"fmt"
-	"designPattern/observerPattern/observer"
+	"designPattern/AAP_observer/a/observer"
 )
 
 type Observable interface {

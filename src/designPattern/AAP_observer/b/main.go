@@ -1,15 +1,15 @@
 package main
 
 import (
-	"designPattern/observerPattern/observable"
-	"designPattern/observerPattern/observer"
+	"designPattern/AAP_observer/b/observers"
+	"designPattern/AAP_observer/b/observable"
 )
 
 func main() {
-	h := new(observable.HanFeiZi)
+	h := observable.NewHanFeiZi()
 
-	l := new(observer.Lisi)
-	w := new(observer.Wangsi)
+	l := new(observers.Lisi)
+	w := new(observers.Wangsi)
 	h.AddObserver(l)
 	h.AddObserver(w)
 	h.HaveBreakfast()
