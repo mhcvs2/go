@@ -1,0 +1,3 @@
+
+void SayHello(char* s);
+
