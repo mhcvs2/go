@@ -1,6 +1,10 @@
 package qsort
 
-//typedef int (*qsort_cmp_func_t)(const void* a, const void* b);
+/*
+#include <stdlib.h>
+typedef int (*qsort_cmp_func_t)(const void* a, const void* b);
+extern int _cgo_qsort_compare(void* a, void* b);
+*/
 import "C"
 import (
 	"unsafe"
