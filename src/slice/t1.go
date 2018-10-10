@@ -4,9 +4,12 @@ import "fmt"
 
 func t11() {
 	s := []int{1,2,3,5}
+	fmt.Println(s[:2])
 	s = append(s[:2], s[3:]...)
 	fmt.Println(s)
 }
+//[1 2]
+//[1 2 5]
 
 type T struct {
 	t int
@@ -34,5 +37,5 @@ func t12() {
 }
 
 func main() {
-	t12()
+	t11()
 }
