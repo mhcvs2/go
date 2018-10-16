@@ -1,7 +1,7 @@
 package main
 
 import (
-	"designPattern/facade/office"
+	"designPattern/AAQ_facade/office"
 )
 
 func main() {

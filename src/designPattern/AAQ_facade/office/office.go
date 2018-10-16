@@ -1,6 +1,6 @@
 package office
 
-import "designPattern/facade/letterProcess"
+import "designPattern/AAQ_facade/letterProcess"
 
 type IOffice interface {
 	SendLetter(context string, address string)
