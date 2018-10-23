@@ -1,4 +1,4 @@
-package employee1
+package employee
 
 type IEmployee interface {
 	GetName() string

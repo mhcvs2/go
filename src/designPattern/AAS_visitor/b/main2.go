@@ -1,6 +1,6 @@
 package main
 
-import "designPattern/visitor/employee1"
+import "designPattern/AAS_visitor/b/employee"
 
 func main() {
 	c := employee1.NewCommonEmployee()
@@ -16,3 +16,6 @@ func main() {
 	c.Accept(v)
 	m.Accept(v)
 }
+
+//name is : haha	job: job1
+//name is : lala	per: good

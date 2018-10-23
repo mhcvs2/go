@@ -1,4 +1,4 @@
-package employee1
+package employee
 
 import "fmt"
 
