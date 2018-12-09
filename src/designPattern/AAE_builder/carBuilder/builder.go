@@ -1,6 +1,6 @@
 package carBuilder
 
-import "designPattern/builder/car"
+import "designPattern/AAE_builder/car"
 
 type CarBuilder interface {
 	SetSequence(actions []car.ActionType)
