@@ -11,12 +11,12 @@ type IHanFeiZi interface {
 }
 
 type HanFeiZi struct {
-	observer.Observable
+	*observer.Observable
 }
 
 func NewHanFeiZi() *HanFeiZi {
 	return &HanFeiZi{
-		*observer.NewObservable(),
+		observer.NewObservable(),
 	}
 }
 
