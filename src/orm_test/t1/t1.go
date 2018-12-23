@@ -1,4 +1,4 @@
-package main
+package t1
 
 //引用模块
 import "github.com/ablegao/orm"

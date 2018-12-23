@@ -197,7 +197,6 @@ func t7() {
 	fmt.Println(value.Index(0))
 }
 
-
 func main() {
-	t4()
+	t7()
 }
