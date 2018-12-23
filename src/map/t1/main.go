@@ -16,6 +16,19 @@ func t1() {
 //map[b:false]
 //map[b:false]
 
+func t2() {
+	m := make(map[int]map[int]string)
+	if _,ok := m[2]; !ok {
+		m[2] = make(map[int]string)
+	}
+	m[2][1] = "good"
+	a, ok := m[2][1]
+	fmt.Println(a, ok)
+	c, ok := m[2]
+	fmt.Println(c, ok)
+
+}
+
 func main() {
-	t1()
+	t2()
 }

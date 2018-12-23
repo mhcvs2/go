@@ -1,6 +1,6 @@
 package carBuilder
 
-import "designPattern/builder/car"
+import "designPattern/AAE_builder/car"
 
 type BMWBuilder struct {
 	bmw *car.CarModel
