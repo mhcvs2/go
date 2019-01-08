@@ -197,28 +197,6 @@ func t7() {
 	fmt.Println(value.Index(0))
 }
 
-type ITest8 interface {
-	test(a string)
-}
-
-type Test8 struct {
-}
-
-func (t Test8)test(a string) {
-	fmt.Println("test8.test")
-}
-
-func t8() {
-	//var a ITest8
-	a := Test8{}
-	fmt.Println(reflect.TypeOf(&a).Elem().Name())
-	a2 := Test8{}
-	handlerType := reflect.TypeOf(a2)
-	queryTypeName := handlerType.In(0).Elem().Name()
-	fmt.Println(queryTypeName)
-}
-//Test8
-
 func main() {
-	t8()
+	t7()
 }
