@@ -27,6 +27,14 @@ func b3() {
 	fmt.Println(res)
 }
 
+func b4() {
+	s := " asss "
+	fmt.Println(strings.Index(s, "e"))
+	fmt.Println(strings.TrimSpace(s))
+	n := strings.TrimSpace(strings.Replace(s, "s", "", -1))
+	fmt.Println(n)
+	}
+
 func main() {
-	b3()
+	b4()
 }
