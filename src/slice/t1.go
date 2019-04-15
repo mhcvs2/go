@@ -1,9 +1,13 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 func t11() {
 	s := []int{1,2,3,5}
+	fmt.Println(s[0])
 	fmt.Println(s[:2])
 	s = append(s[:2], s[3:]...)
 	fmt.Println(s)
@@ -36,6 +40,14 @@ func t12() {
 	}
 }
 
+func t13() {
+	a := "sadf dfsdf"
+	b := strings.Split(a, " ")
+	var c string
+	c = b[0]
+	fmt.Println(c)
+}
+
 func main() {
-	t11()
+	t13()
 }
