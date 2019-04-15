@@ -35,6 +35,7 @@ func (f *MyJSONFormatter) Format(entry *log.Entry) ([]byte, error) {
 
 func t1() {
 	log.SetFormatter(&MyJSONFormatter{})
+	log.SetLevel(log.InfoLevel)
 	cmdLog := *log.WithFields(log.Fields{"name":"aa"})
 	cmdLog.Info("hahaha")
 	cmdLog.Error("lalalal")
