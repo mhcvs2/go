@@ -26,13 +26,15 @@ type Observable struct {
 	changed bool
 	obs map[Observer]bool
 	lock *sync.RWMutex
+	spec IObservable
 }
 
-func NewObservable() *Observable {
+func NewObservable(spec IObservable) *Observable {
 	return &Observable{
 		changed: false,
 		obs: make(map[Observer]bool),
 		lock: new(sync.RWMutex),
+		spec: spec,
 	}
 }
 
@@ -74,7 +76,7 @@ func (o *Observable) NotifyObservers(arg interface{}) {
 	o.changed = false
 	o.lock.RUnlock()
 	for i:=0; i<l; i++ {
-		arrLocal[i].Update(o, arg)
+		arrLocal[i].Update(o.spec, arg)
 	}
 }
 

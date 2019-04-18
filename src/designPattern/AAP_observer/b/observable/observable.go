@@ -15,9 +15,9 @@ type HanFeiZi struct {
 }
 
 func NewHanFeiZi() *HanFeiZi {
-	return &HanFeiZi{
-		observer.NewObservable(),
-	}
+	res := &HanFeiZi{}
+	res.Observable = observer.NewObservable(res)
+	return res
 }
 
 func (h *HanFeiZi) HaveBreakfast() {
