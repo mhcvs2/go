@@ -26,10 +26,11 @@ func init() {
 }
 
 func main() {
-	//a
+	// 只遍历设置了值的
 	testFlags.Visit(func(f *flag.Flag) {
 		fmt.Printf("visit flag %s\n", f.Name)
 	})
+	// 遍历所有的
 	testFlags.VisitAll(func(f *flag.Flag) {
 		fmt.Printf("visit all flag: %s\n", f.Name)
 		err := testFlags.Set(f.Name, "222")

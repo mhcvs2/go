@@ -16,6 +16,7 @@ func t1() {
 	if err != nil { // Handle errors reading the config file
 		panic(fmt.Errorf("Fatal error config file: %s \n", err))
 	}
+	// 设置大小写GO_WORKER_TEST1都行
 	viper.SetEnvPrefix("go_worker")
 	viper.BindEnv("test1")
 
@@ -32,6 +33,18 @@ func t1() {
 //test3 default
 //13
 
+func bindEnv(name, defaultValue string, v *string) {
+	viper.BindEnv(name)
+	viper.SetDefault(name, defaultValue)
+	*v = viper.Get(name).(string)
+}
+
+func t2() {
+	var value string
+	bindEnv("t1", "dt1", &value)
+	fmt.Println(value)
+}
+
 func main() {
-	t1()
+	t2()
 }
