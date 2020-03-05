@@ -48,6 +48,12 @@ func t13() {
 	fmt.Println(c)
 }
 
+func t14() {
+	s := []int{0,1}
+	b := s[0:2]
+	fmt.Println(b)
+}
+
 func main() {
-	t13()
+	t14()
 }
