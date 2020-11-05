@@ -12,6 +12,7 @@ import (
 func Trap(cleanup func()) {
 	c := make(chan os.Signal, 1)
 	signals := []os.Signal{os.Interrupt, syscall.SIGTERM}
+	gosignal.Notify(c, signals...)
 	if os.Getenv("debug") == "" {
 		signals = append(signals, syscall.SIGQUIT)
 	}
